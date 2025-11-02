@@ -1,4 +1,4 @@
-# Credit Card Parser (frontend)
+# Credit Card Parser
 
 This small React app provides a handy UI to paste or upload bank/credit-card statement text and detect potential credit card numbers (masked in results), along with Luhn validation and brand detection.
 
