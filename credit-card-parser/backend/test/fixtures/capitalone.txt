@@ -1,0 +1,8 @@
+Capital One Statement
+Statement period 05/01/2025 to 05/31/2025
+New balance $210.00
+Payment due date: 06/20/2025
+Activity:
+05/10/2025 CAFE  -$8.50
+05/22/2025 SUPERMARKET  -$45.00
+Ending in 5678

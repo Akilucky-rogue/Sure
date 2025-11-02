@@ -1,0 +1,8 @@
+American Express Statement
+Statement period 07/01/2025 to 07/31/2025
+Amount due $1,234.00
+Payment due date: 08/18/2025
+Activity:
+Jul 02 2025 HOTEL  -$200.00
+Jul 18 2025 ONLINE SHOP  -$99.00
+Account ending 3456

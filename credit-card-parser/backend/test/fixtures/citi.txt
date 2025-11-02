@@ -1,0 +1,8 @@
+Citi Credit Card Statement
+Statement period 08/01/2025 to 08/31/2025
+New balance $987.65
+Payment due date: 09/20/2025
+Activity:
+08/05/2025 RESTAURANT  -$78.90
+08/27/2025 FUEL  -$32.10
+Card ending 2345
