@@ -82,14 +82,28 @@ function findTotalBalance(text) {
 function findTransactions(text, max = 20) {
   const lines = (text || '').split(/\r?\n/);
   const tx = [];
-  const dateRe = /\b(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}|[A-Za-z]{3,9} \d{1,2})\b/;
-  const moneyRe = /([\$€£]?\s*[+-]?\d[\d,]*\.?\d{0,2})/;
+  // More strict date recognition: dd/mm/yyyy or mm/dd/yyyy or Month dd
+  const dateRe = /(^|\s)(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}|[A-Za-z]{3,9} \d{1,2})(?=\s|\b)/i;
+  // Money: allow optional currency symbol, optional thousands separators, mandatory decimal or integer
+  const moneyRe = /([\$€£]?\s*[+-]?\d{1,3}(?:[,\.]\d{3})*(?:[\.,]\d{2}))/;
+  const skipKeywords = /statement|balance|amount due|new balance|total balance|payment due|account ending|ending in/i;
+
   for (let l of lines) {
     if (tx.length >= max) break;
-    const d = l.match(dateRe);
-    const m = l.match(moneyRe);
+    const line = l.trim();
+    if (!line) continue;
+    // skip lines that are clearly headers or summary
+    if (skipKeywords.test(line)) continue;
+    const d = line.match(dateRe);
+    const m = line.match(moneyRe);
+    // Only accept as transaction when date appears and an amount appears further on the same line
     if (d && m) {
-      tx.push({ raw: l.trim(), date: d[1], amount: m[1].trim() });
+      // ensure the amount is not the same short token as the date (avoid false positives)
+      const dateToken = d[2];
+      const amountToken = m[1];
+      if (dateToken && amountToken && dateToken !== amountToken) {
+        tx.push({ raw: line, date: dateToken.trim(), amount: amountToken.trim() });
+      }
     }
   }
   return tx;
