@@ -1,4 +1,4 @@
-# Credit Card Statement Parser (Jarvis)
+# Credit Card Statement Parser
 
 This repository contains a small React-based tool to parse credit card statements and extract potential card numbers and structured statement data from text and PDF files.
 
@@ -113,12 +113,8 @@ npm test -- --watchAll=false
 - Add server-side parsing or OCR pipeline for scanned documents.
 - Implement stricter PII handling policies (e.g., automatic deletion after processing, secure upload endpoints).
 
-## Where I pushed the code
-
-- I pushed your changes to: https://github.com/Akilucky-rogue/Sure (main branch).
-
 ## Contact / Maintainers
 
 - Repo owner: Akilucky-rogue
 
-Thanks — if you want, I can now add example statement fixtures (realistic-but-sanitized samples) and unit tests for each provider to increase parser reliability.
+Thanks
